@@ -15,7 +15,7 @@ const About = () => {
         </p>
         <h2>Cool, how do I start?</h2>
         <p>
-          For now the sign in options DOEST NOT WORK. Simply click try as the guest. I&apos;m busy with another projects, but I will add the session feature in the future.
+           Simply click try as the guest. I&apos;m busy with another projects, but I will add the session feature in the future.
         </p>
 
         <h2>See more...</h2>
