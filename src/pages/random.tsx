@@ -12,7 +12,7 @@ const Random = () => {
     <>
       <main className="container mx-auto min-h-screen">
         <div className="mt-20 flex h-screen w-full flex-col items-center font-bold">
-          <div className="flex w-full flex-col items-center bg-gray-300">
+          <div className="flex w-full flex-col items-center">
             <Image
               src={randomRecipe.data?.recipes[0].image}
               alt={`foodimg`}
@@ -20,12 +20,12 @@ const Random = () => {
               height={400}
               className={`rounded-md shadow-md`}
             />
-            <h1 className="mt-5 text-center text-xl">
+            <h1 className="mt-5 text-center text-3xl">
               {randomRecipe.data?.recipes[0].title}
             </h1>
 
             <div className="self-start p-5">
-              <h2 className="mt-5">Ingredients</h2>
+              <h2 className="mt-5 text-2xl">Ingredients</h2>
               <ul className="list-disc font-normal">{ingredients}</ul>
             </div>
           </div>
