@@ -12,7 +12,7 @@ export function Searchbar() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search a food..."
-        className="w-full flex-1 rounded-3xl px-6 py-6 text-base"
+        className="w-full flex-1 rounded-3xl px-7 py-7 text-base"
       />
       <Link
         href={{
@@ -20,7 +20,7 @@ export function Searchbar() {
           query: { q: query },
         }}
       >
-        <SearchIcon className="absolute right-4 top-2 h-8 w-8 rounded-full bg-orange-500 p-1 text-neutral-200 hover:bg-orange-400" />
+        <SearchIcon className="absolute right-4 top-3 h-8 w-8 rounded-full bg-orange-500 p-1 text-neutral-200 hover:bg-orange-400" />
       </Link>
     </div>
   );

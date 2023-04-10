@@ -4,7 +4,7 @@ const About = () => {
       id="about"
       className="flex w-full flex-col items-center justify-center scroll-smooth bg-gray-200 p-5 align-middle  text-gray-100 md:h-screen lg:h-screen"
     >
-      <article className="prose p-10 text-2xl text-black prose-h2:text-4xl">
+      <article className="prose prose-h2:text-4xl p-10 text-2xl text-black">
         <h2>What&apos;s this?</h2>
         <p>
           Do you love to cook? Having trouble finding the right recipe for u?
@@ -14,9 +14,7 @@ const About = () => {
           Try the random option!
         </p>
         <h2>Cool, how do I start?</h2>
-        <p>
-           Simply click try as the guest. I&apos;m busy with another projects, but I will add the session feature in the future.
-        </p>
+        <p>Simply try searching!.</p>
 
         <h2>See more...</h2>
         <p>

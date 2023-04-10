@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="mt-12 flex w-full justify-between border-t-2 border-neutral-300  py-10 text-neutral-600">
+    <footer className="flex w-full justify-between border-t-2 border-neutral-300  py-16 text-neutral-600">
       <ul className="px-10">
         <li>
-          <Link href="/home">Home</Link>
+          <Link href="/">Home</Link>
         </li>
         <li>
           <Link href="/about">About</Link>

@@ -1,7 +1,17 @@
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "@/server/api/trpc";
+import { prisma } from "@/server/db";
 import { getRecipeById, getRecipes } from "@/utils/spoonacular";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+
+const recipeSchema = z.object({
+  recipeId: z.number(),
+  name: z.string(),
+});
 
 export const recipeRouter = createTRPCRouter({
   getRecipes: publicProcedure
@@ -34,4 +44,45 @@ export const recipeRouter = createTRPCRouter({
       }
       return await getRecipeById(input.id);
     }),
+
+  addToFavorites: protectedProcedure
+    .input(recipeSchema)
+    .mutation(async ({ input, ctx }) => {
+      return await prisma.favoriteRecipe.create({
+        data: {
+          recipeId: input.recipeId,
+          name: input.name,
+          users: {
+            connect: {
+              id: ctx.session.user.id,
+            },
+          },
+        },
+      });
+    }),
+
+  removeFromFavorites: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      return await prisma.favoriteRecipe.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
+
+  getAllFavoritesRecipes: protectedProcedure.query(async ({ ctx }) => {
+    return await prisma.user.findUnique({
+      where: {
+        id: ctx.session.user.id,
+      },
+      include: {
+        favoriteRecipes: true,
+      },
+    });
+  }),
 });
