@@ -6,6 +6,9 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
+  images: {
+    domains: ["spoonacular.com"],
+  },
   reactStrictMode: true,
 
   /**
