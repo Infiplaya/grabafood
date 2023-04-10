@@ -1,16 +1,5 @@
-import { RecipesData } from "@/types/complex-search";
-import type { RandomRecipeData, Recipe } from "@/types/random-recipe";
-import { RecipeByID } from "@/types/recipe-by-id";
-
-export async function getRandomRecipe(): Promise<RandomRecipeData | undefined> {
-  if (!process.env.SPOONACULAR_API_KEY) {
-    return;
-  }
-  const res = await fetch(
-    `https://api.spoonacular.com/recipes/random?apiKey=${process.env.SPOONACULAR_API_KEY}`
-  );
-  return (await res.json()) as RandomRecipeData;
-}
+import { type RecipesData } from "@/types/complex-search";
+import { type RecipeByID } from "@/types/recipe-by-id";
 
 export async function getRecipes(
   query: string | string[]

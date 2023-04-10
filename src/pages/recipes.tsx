@@ -1,3 +1,4 @@
+import { Searchbar } from "@/components/Searchbar";
 import { type RecipesData } from "@/types/complex-search";
 import { api } from "@/utils/api";
 import { getRecipes } from "@/utils/spoonacular";
@@ -24,11 +25,12 @@ export default function Recipes({
   const { data, isFetched } = api.recipes.getRecipes.useQuery(
     { query: q },
     {
-      enabled: q !== undefined,
+      enabled: q !== "",
     }
   );
   return (
     <div>
+      <Searchbar />
       {isFetched
         ? data?.results.map((recipe) => (
             <Link key={recipe.id} href={`/recipes/${recipe.id}`}>
