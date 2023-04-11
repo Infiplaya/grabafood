@@ -1,17 +1,18 @@
 import { Button } from "@/components/ui/Button";
-import { api } from "@/utils/api";
-import { useRouter } from "next/router";
+import { useAddToFavorites } from "@/hooks/useAddToFavorites";
+import { useRemoveFromFavorites } from "@/hooks/useDeleteFromFavorites";
+import { useFavorites } from "@/hooks/useFavorites";
+import { useRecipes } from "@/hooks/useRecipes";
+import Image from "next/image";
 
 export default function RecipePage() {
-  const router = useRouter();
-  const { id } = router.query;
-  const { data, isLoading, isError } = api.recipes.getRecipeById.useQuery({
-    id,
-  });
+  const { isLoading, isError, data } = useRecipes();
 
-  const addToFavoritesMutation = api.recipes.addToFavorites.useMutation();
+  const addToFavoritesMutation = useAddToFavorites();
 
-  const { data: favorites } = api.recipes.getAllFavoritesRecipes.useQuery();
+  const removeFromFavoritesMutation = useRemoveFromFavorites();
+
+  const favoriteRecipesIds = useFavorites();
 
   function addToFavorites() {
     if (!data) {
@@ -23,6 +24,10 @@ export default function RecipePage() {
     });
   }
 
+  function removeFromFavorites(id: number) {
+    removeFromFavoritesMutation.mutate({ recipeId: id });
+  }
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -31,25 +36,36 @@ export default function RecipePage() {
     return <div>Something went wrong</div>;
   }
 
-  return (
-    <div>
-      <h1 className="text-4xl font-bold">{data?.title}</h1>
-      {favorites?.favoriteRecipes?.map(
-        (recipe) => recipe.recipeId === data?.id
-      ) ? (
-        <Button>Delete From Favorites</Button>
-      ) : (
-        <Button
-          onClick={() => addToFavorites()}
-          disabled={addToFavoritesMutation.isLoading}
-        >
-          ADD TO FAVORITES
-        </Button>
-      )}
-
+  if (data) {
+    return (
       <div>
-        {addToFavoritesMutation.isSuccess ? <p>Cool!</p> : <p>Lool!</p>}
+        <h1 className="text-4xl font-bold">{data?.title}</h1>
+        {<Image src={data.image} alt="" width={556} height={370} />}
+        <p>{data?.dishTypes}</p>
+        <p dangerouslySetInnerHTML={{ __html: data?.instructions }}></p>
+        <ul>
+          {data?.extendedIngredients.map((item, idx) => (
+            <li key={idx}>{item.name}</li>
+          ))}
+        </ul>
+        {favoriteRecipesIds?.includes(data.id) ? (
+          <Button
+            onClick={() => removeFromFavorites(data.id)}
+            disabled={removeFromFavoritesMutation.isLoading}
+          >
+            Delete From Favorites
+          </Button>
+        ) : (
+          <Button
+            onClick={() => addToFavorites()}
+            disabled={addToFavoritesMutation.isLoading}
+          >
+            ADD TO FAVORITES
+          </Button>
+        )}
       </div>
-    </div>
-  );
+    );
+  }
+
+  return null;
 }

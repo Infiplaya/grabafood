@@ -10,8 +10,8 @@ export default function Favorites() {
 
   const deleteMutation = api.recipes.removeFromFavorites.useMutation();
 
-  function removeFromFavorites(id: string) {
-    deleteMutation.mutate({ id });
+  function removeFromFavorites(id: number) {
+    deleteMutation.mutate({ recipeId: id });
   }
 
   if (isLoading) {
@@ -32,7 +32,7 @@ export default function Favorites() {
                 key={recipe.id}
               >
                 <Link
-                  href={`/recipes/${recipe.recipeId}`}
+                  href={`/recipes/${recipe.id}`}
                   className="rounded- p-3 transition-all hover:bg-neutral-200"
                 >
                   <p>{recipe.name}</p>

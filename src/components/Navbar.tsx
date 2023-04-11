@@ -28,7 +28,7 @@ export function Navbar() {
 
           <li>
             {session ? (
-              <Button onClick={() => void signOut} size={"sm"}>
+              <Button onClick={() => void signOut()} size={"sm"}>
                 Sign Out
               </Button>
             ) : (

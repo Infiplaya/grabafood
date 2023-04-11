@@ -48,13 +48,31 @@ export const recipeRouter = createTRPCRouter({
   addToFavorites: protectedProcedure
     .input(recipeSchema)
     .mutation(async ({ input, ctx }) => {
-      return await prisma.favoriteRecipe.create({
+      const recipe = await prisma.favoriteRecipe.findUnique({
+        where: {
+          id: input.recipeId,
+        },
+      });
+
+      if (!recipe) {
+        await prisma.favoriteRecipe.create({
+          data: {
+            id: input.recipeId,
+            name: input.name,
+            users: {
+              connect: {
+                id: ctx.session.user.id,
+              },
+            },
+          },
+        });
+      }
+      return await prisma.user.update({
+        where: { id: ctx.session.user.id },
         data: {
-          recipeId: input.recipeId,
-          name: input.name,
-          users: {
+          favoriteRecipes: {
             connect: {
-              id: ctx.session.user.id,
+              id: input.recipeId,
             },
           },
         },
@@ -64,13 +82,18 @@ export const recipeRouter = createTRPCRouter({
   removeFromFavorites: protectedProcedure
     .input(
       z.object({
-        id: z.string(),
+        recipeId: z.number(),
       })
     )
-    .mutation(async ({ input }) => {
-      return await prisma.favoriteRecipe.delete({
-        where: {
-          id: input.id,
+    .mutation(async ({ input, ctx }) => {
+      return await prisma.user.update({
+        where: { id: ctx.session.user.id },
+        data: {
+          favoriteRecipes: {
+            disconnect: {
+              id: input.recipeId,
+            },
+          },
         },
       });
     }),

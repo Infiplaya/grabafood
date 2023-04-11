@@ -67,8 +67,7 @@ model VerificationToken {
 }
 
 model FavoriteRecipe {
-    id        String   @id @default(cuid())
-    recipeId  Int
+    id        Int      @id @unique
     name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now())
