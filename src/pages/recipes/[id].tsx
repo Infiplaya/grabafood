@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/Button";
 import { useAddToFavorites } from "@/hooks/useAddToFavorites";
 import { useRemoveFromFavorites } from "@/hooks/useDeleteFromFavorites";
 import { useFavorites } from "@/hooks/useFavorites";
-import { useRecipes } from "@/hooks/useRecipes";
+import { useRecipeById, useRecipes } from "@/hooks/useRecipes";
 import Image from "next/image";
 
 export default function RecipePage() {
-  const { isLoading, isError, data } = useRecipes();
+  const { isLoading, isError, data } = useRecipeById();
 
   const addToFavoritesMutation = useAddToFavorites();
 

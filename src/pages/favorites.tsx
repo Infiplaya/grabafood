@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { useRemoveFromFavorites } from "@/hooks/useDeleteFromFavorites";
 import { api } from "@/utils/api";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -8,10 +9,10 @@ export default function Favorites() {
   const { data, isLoading, isError } =
     api.recipes.getAllFavoritesRecipes.useQuery();
 
-  const deleteMutation = api.recipes.removeFromFavorites.useMutation();
+  const removeFromFavoritesMutation = useRemoveFromFavorites();
 
   function removeFromFavorites(id: number) {
-    deleteMutation.mutate({ recipeId: id });
+    removeFromFavoritesMutation.mutate({ recipeId: id });
   }
 
   if (isLoading) {
@@ -42,7 +43,7 @@ export default function Favorites() {
                   variant="destructive"
                   size={"sm"}
                   onClick={() => removeFromFavorites(recipe.id)}
-                  disabled={deleteMutation.isLoading}
+                  disabled={removeFromFavoritesMutation.isLoading}
                 >
                   Delete
                 </Button>

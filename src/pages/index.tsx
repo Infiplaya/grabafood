@@ -52,7 +52,7 @@ const Home: NextPage = () => {
               Search through{" "}
               <Link
                 href="/recipes"
-                className="text-orange-500 underline-offset-8 hover:underline"
+                className="text-orange-400 underline-offset-8 hover:underline"
               >
                 recipes
               </Link>
