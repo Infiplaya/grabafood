@@ -49,7 +49,7 @@ const Home: NextPage = () => {
             className="hidden h-2/3 rounded-lg object-cover shadow-lg lg:block"
           />
         </section>
-        <div className="mt-12 flex w-full justify-center py-6">
+        <div className="mt-12 flex w-full justify-center px-6 py-6">
           <Image
             priority={true}
             src="/hero.webp"
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
             width={600}
             height={800}
             decoding="async"
-            className="h-80 w-3/4 rounded-lg object-cover shadow-md lg:hidden"
+            className="h-80 rounded-lg object-cover shadow-md lg:hidden"
           />
         </div>
         <section className="mt-12 flex flex-col items-center justify-center px-6 py-12 lg:mx-auto lg:mt-0 lg:hidden lg:w-1/2 lg:-rotate-6">

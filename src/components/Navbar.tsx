@@ -7,9 +7,9 @@ export function Navbar() {
   const { data: session } = useSession();
   return (
     <header className="w-full shadow-sm shadow-neutral-200">
-      <nav className="flex items-center gap-10 px-5 py-8 lg:mx-auto lg:max-w-7xl">
-        <div className="px-5 text-2xl font-medium">
-          <Link href="/">
+      <nav className="flex items-center gap-5 px-5 py-8 lg:mx-auto lg:max-w-7xl">
+        <div className="px-5 text-xl font-medium">
+          <Link href="/" className="inline-block tracking-tight">
             Grab A <span className="text-orange-500">Food</span>
           </Link>
         </div>
