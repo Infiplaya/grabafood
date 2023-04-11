@@ -1,5 +1,5 @@
 import { Searchbar } from "@/components/Searchbar";
-import { Result, type RecipesData } from "@/types/complex-search";
+import { type Result, type RecipesData } from "@/types/complex-search";
 import { api } from "@/utils/api";
 import { getRecipes } from "@/utils/spoonacular";
 import Image from "next/image";
