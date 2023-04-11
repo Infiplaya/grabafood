@@ -20,11 +20,11 @@ const Home: NextPage = () => {
       <main>
         <section className="mt-24 grid-cols-2 place-items-center px-6 lg:mx-auto lg:mt-0 lg:grid lg:max-w-7xl lg:gap-20">
           <div className="lg:mb-24">
-            <h1 className="max-w-xl text-4xl font-bold lg:max-w-xl lg:text-6xl">
+            <h1 className="max-w-xl tracking-tight text-4xl font-bold lg:max-w-xl lg:text-6xl">
               Having problems figuring out{" "}
               <span className="lg:text-orange-500">what to eat?</span>
             </h1>
-            <h2 className="mt-3 text-2xl font-bold">
+            <h2 className="mt-3 text-2xl tracking-tight font-bold">
               No worries. Just search.
             </h2>
             <Searchbar />
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
         </div>
         <section className="mt-12 flex flex-col items-center justify-center px-6 py-12 lg:mx-auto lg:mt-0 lg:hidden lg:w-1/2 lg:-rotate-6">
           <div className="py-6 text-center">
-            <h2 className="text-3xl font-semibold lg:text-5xl lg:font-medium">
+            <h2 className="text-3xl tracking-tight font-semibold lg:text-5xl lg:font-medium">
               Feeling lucky?
             </h2>
             <Link href={`/recipes/${getRandomNumber()}`}>
@@ -72,9 +72,9 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </section>
-        <section className="mt-12 lg:mt-0 w-full bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 py-32">
+        <section className="mt-12 w-full bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 py-32">
           <div className="mx-auto px-6 text-left lg:max-w-7xl lg:text-center">
-            <h2 className="text-3xl font-semibold text-neutral-100 lg:text-5xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-neutral-100 lg:text-5xl">
               Search through{" "}
               <Link
                 href="/recipes"
@@ -96,11 +96,11 @@ const Home: NextPage = () => {
           </div>
         </section>
         <section className="bg-neutral-800 py-32 text-neutral-100">
-          <div className="flex items-center lg:flex-col justify-center gap-8 px-6">
-            <h3 className="text-2xl lg:text-3xl max-w-sm lg:text-center">
-              Powered by data from{" "}
+          <div className="flex items-center justify-center gap-8 px-6">
+            <h3 className="max-w-sm text-2xl lg:text-4xl  tracking-tight">
+              Powered by{" "}
               <Link
-                className="underline-offset-8 hover:underline"
+                className="block underline-offset-8 text-green-500 hover:underline"
                 href="https://spoonacular.com/food-api"
               >
                 Spoonacular API

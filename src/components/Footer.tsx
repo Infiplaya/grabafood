@@ -7,16 +7,30 @@ export function Footer() {
       <div className="flex w-full justify-between lg:mx-auto lg:max-w-7xl">
         <ul className="px-10 lg:space-y-5">
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/" className="underline-offset-8 hover:underline">
+              Home
+            </Link>
           </li>
           <li>
-            <Link href="/about">About</Link>
+            <Link href="/about" className="underline-offset-8 hover:underline">
+              About
+            </Link>
           </li>
           <li>
-            <Link href="/recipes">Recipes</Link>
+            <Link
+              href="/recipes"
+              className="underline-offset-8 hover:underline"
+            >
+              Recipes
+            </Link>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <Link
+              href="/contact"
+              className="underline-offset-8 hover:underline"
+            >
+              Contact
+            </Link>
           </li>
         </ul>
         <div className="px-10">
