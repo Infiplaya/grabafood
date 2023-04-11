@@ -31,7 +31,7 @@ export default function Recipes({
     }
   );
 
-  if (isLoading) {
+  if (q !== undefined && isLoading) {
     return (
       <main className="mt-12 px-6 lg:mx-auto lg:max-w-7xl">
         <Searchbar />
