@@ -17,7 +17,7 @@ export default function MobileNav() {
   return (
     <div>
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow">
+        <DropdownMenuTrigger className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow shadow-neutral-400">
           <Menu />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="mr-10 w-64 p-5 lg:hidden">

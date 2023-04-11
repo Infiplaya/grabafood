@@ -18,12 +18,36 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <section className="mt-24 px-6">
-          <h1 className="max-w-md text-4xl font-bold">
-            Having problems figuring out what to eat?
-          </h1>
-          <h2 className="mt-3 text-2xl font-bold">No worries. Just search.</h2>
-          <Searchbar />
+        <section className="mt-24 grid-cols-2 place-items-center px-6 lg:mx-auto lg:mt-0 lg:grid lg:max-w-7xl lg:gap-20">
+          <div className="lg:mb-24">
+            <h1 className="max-w-xl text-4xl font-bold lg:max-w-xl lg:text-6xl">
+              Having problems figuring out{" "}
+              <span className="lg:text-orange-500">what to eat?</span>
+            </h1>
+            <h2 className="mt-3 text-2xl font-bold">
+              No worries. Just search.
+            </h2>
+            <Searchbar />
+            <div className="mt-12 hidden items-center gap-3 lg:flex">
+              <p className="text-base font-medium text-neutral-600">
+                Feeling lucky?
+              </p>
+              <Link href={`/recipes/${getRandomNumber()}`}>
+                <Button variant="subtle" className="text-base text-neutral-600">
+                  Get Random Recipe
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <Image
+            priority={true}
+            src="/hero.webp"
+            alt="food img"
+            width={600}
+            height={800}
+            decoding="async"
+            className="hidden h-2/3 rounded-lg object-cover shadow-lg lg:block"
+          />
         </section>
         <div className="mt-12 flex w-full justify-center py-6">
           <Image
@@ -33,22 +57,24 @@ const Home: NextPage = () => {
             width={600}
             height={800}
             decoding="async"
-            className="h-80 w-3/4 rounded-lg object-cover shadow-md"
+            className="h-80 w-3/4 rounded-lg object-cover shadow-md lg:hidden"
           />
         </div>
-        <section className="mt-12 flex flex-col items-center justify-center px-6 py-12">
+        <section className="mt-12 flex flex-col items-center justify-center px-6 py-12 lg:mx-auto lg:mt-0 lg:hidden lg:w-1/2 lg:-rotate-6">
           <div className="py-6 text-center">
-            <h2 className="text-3xl font-semibold">Feeling lucky?</h2>
+            <h2 className="text-3xl font-semibold lg:text-5xl lg:font-medium">
+              Feeling lucky?
+            </h2>
             <Link href={`/recipes/${getRandomNumber()}`}>
               <Button className="mt-6 text-lg" size="lg">
-                TRY ME!
+                Get Randome Recipe
               </Button>
             </Link>
           </div>
         </section>
-        <section className="mt-12 w-full bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 py-32">
-          <div className="px-6">
-            <h2 className="text-3xl font-semibold text-neutral-100">
+        <section className="mt-12 lg:mt-0 w-full bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 py-32">
+          <div className="mx-auto px-6 text-left lg:max-w-7xl lg:text-center">
+            <h2 className="text-3xl font-semibold text-neutral-100 lg:text-5xl">
               Search through{" "}
               <Link
                 href="/recipes"
@@ -57,14 +83,21 @@ const Home: NextPage = () => {
                 recipes
               </Link>
             </h2>
-            <p className="mt-3 text-left text-xl text-neutral-100">
+            <p className="mx-auto mt-3 text-left text-xl text-neutral-100 lg:mt-6 lg:max-w-7xl lg:text-center">
               Find a recipe you will love. You can add it to your favorites too!
             </p>
+            <Image
+              src="/mockup.png"
+              width={500}
+              height={800}
+              alt="mockup"
+              className="mx-auto"
+            />
           </div>
         </section>
-        <section className="mt-12 bg-green-600  py-32">
-          <div className="flex items-center justify-center px-6">
-            <h3 className="text-2xl font-medium text-neutral-100">
+        <section className="bg-neutral-800 py-32 text-neutral-100">
+          <div className="flex items-center lg:flex-col justify-center gap-8 px-6">
+            <h3 className="text-2xl lg:text-3xl max-w-sm lg:text-center">
               Powered by data from{" "}
               <Link
                 className="underline-offset-8 hover:underline"

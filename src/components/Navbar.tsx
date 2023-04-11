@@ -6,41 +6,50 @@ import { Button } from "./ui/Button";
 export function Navbar() {
   const { data: session } = useSession();
   return (
-    <header className="w-full">
-      <nav className="flex items-center px-5 py-8 shadow-md shadow-neutral-200">
+    <header className="w-full shadow-sm shadow-neutral-200">
+      <nav className="flex items-center gap-10 px-5 py-8 lg:mx-auto lg:max-w-7xl">
         <div className="px-5 text-2xl font-medium">
           <Link href="/">
             Grab A <span className="text-orange-500">Food</span>
           </Link>
         </div>
-        <div className="ml-auto flex items-center gap-5 lg:hidden">
-          {session ? (
-            <Button onClick={() => void signOut()} size={"sm"}>
-              Sign Out
-            </Button>
-          ) : (
-            <Button onClick={() => void signIn("google")} size={"sm"}>
-              Sign In
-            </Button>
-          )}
-          <MobileNav />
-        </div>
-        <ul className="hidden items-center gap-5 font-semibold lg:flex">
+        <ul className="hidden items-center text-sm  lg:flex">
           <li>
-            <Link href="/recipes">Recipes</Link>
+            <Link
+              href="/recipes"
+              className="rounded-lg px-4 py-2 transition-all hover:bg-neutral-200"
+            >
+              Recipes
+            </Link>
           </li>
           <li>
-            <Link href="/about">About</Link>
+            <Link
+              href="/about"
+              className="rounded-lg px-4 py-2 transition-all hover:bg-neutral-200"
+            >
+              About
+            </Link>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <Link
+              href="/contact"
+              className="rounded-lg px-4 py-2 transition-all hover:bg-neutral-200"
+            >
+              Contact
+            </Link>
           </li>
           {session ? (
             <li>
-              <Link href="/favorites">Favorites</Link>
+              <Link
+                href="/favorites"
+                className="rounded-lg px-4 py-2 transition-all hover:bg-neutral-200"
+              >
+                Favorites
+              </Link>
             </li>
           ) : null}
-
+        </ul>
+        <div className="ml-auto flex">
           {session ? (
             <Button onClick={() => void signOut()} size={"sm"}>
               Sign Out
@@ -50,7 +59,10 @@ export function Navbar() {
               Sign In
             </Button>
           )}
-        </ul>
+        </div>
+        <div className="lg:hidden">
+          <MobileNav />
+        </div>
       </nav>
     </header>
   );
