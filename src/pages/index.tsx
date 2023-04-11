@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { Searchbar } from "@/components/Searchbar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 
 function getRandomNumber() {
   return Math.ceil(Math.random() * 1000);
@@ -62,7 +63,7 @@ const Home: NextPage = () => {
         </div>
         <section className="mt-12 flex flex-col items-center justify-center px-6 py-12 lg:mx-auto lg:mt-0 lg:hidden lg:w-1/2 lg:-rotate-6">
           <div className="py-6 text-center">
-            <h2 className="text-3xl font-semibold tracking-tight lg:text-5xl lg:font-medium">
+            <h2 className="text-3xl tracking-tight lg:text-5xl lg:font-medium">
               Feeling lucky?
             </h2>
             <Link href={`/recipes/${getRandomNumber()}`}>
@@ -72,9 +73,9 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </section>
-        <section className="mt-12 w-full bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 py-32">
+        <section className="mt-12 w-full bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600 py-32">
           <div className="mx-auto px-6 text-left lg:max-w-7xl lg:text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-100 lg:text-5xl">
+            <h2 className="text-3xl tracking-tight text-neutral-100 lg:text-5xl">
               Search through{" "}
               <Link
                 href="/recipes"
@@ -86,13 +87,51 @@ const Home: NextPage = () => {
             <p className="mx-auto mt-3 text-left text-xl text-neutral-100 lg:mt-6 lg:max-w-7xl lg:text-center">
               Find a recipe you will love. You can add it to your favorites too!
             </p>
-            <Image
-              src="/mockup.png"
-              width={500}
-              height={800}
-              alt="mockup"
-              className="mx-auto"
-            />
+            <Tabs defaultValue="recipes" className="mt-12 lg:mt-3 rounded-lg lg:p-10">
+              <TabsList>
+                <TabsTrigger value="recipes">Recipes</TabsTrigger>
+                <TabsTrigger value="favorites">Favorites</TabsTrigger>
+              </TabsList>
+              <TabsContent
+                value="recipes"
+                className="mt-6 border border-white/25"
+              >
+                <p className="mb-6 w-full text-left text-sm text-neutral-200 lg:mx-auto lg:max-w-md lg:text-base">
+                  Browse through recipes and find your favorite one! Clicking
+                  into a card moves you into page with recipe details. Use
+                  search bar to find a recipe for food you would like to eat.
+                </p>
+                <Image
+                  src="/recipes.webp"
+                  width={1472}
+                  height={871}
+                  alt="mockup"
+                  loading="lazy"
+                  decoding="async"
+                  className="mx-auto h-2/3 rounded-lg shadow-lg"
+                />
+              </TabsContent>
+              <TabsContent
+                value="favorites"
+                className="mt-6 border border-white/25"
+              >
+                <p className="mb-6 w-full text-left text-sm text-neutral-200 lg:mx-auto lg:max-w-md lg:text-base">
+                  This is the place where you can see all the recipes you
+                  choosed to bookmark. Just click on one of them and you will be
+                  redirected to details page of this recipe. You can delete the
+                  recipe from favorites, too!
+                </p>
+                <Image
+                  src="/favorites.webp"
+                  width={1472}
+                  height={871}
+                  alt="mockup"
+                  loading="lazy"
+                  decoding="async"
+                  className="mx-auto h-2/3 rounded-lg shadow-lg"
+                />
+              </TabsContent>
+            </Tabs>
           </div>
         </section>
         <section className="bg-neutral-800 py-32 text-neutral-100">

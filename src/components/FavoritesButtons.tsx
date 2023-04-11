@@ -1,7 +1,7 @@
 import { useFavorites } from "@/hooks/useFavorites";
 import { StarIcon } from "lucide-react";
-import { Button } from "./ui/Button";
-import Spinner from "./ui/Spinner";
+import { Button } from "@/components/ui/Button";
+import Spinner from "@/components/ui/Spinner";
 
 export default function FavoritesButtons({
   id,
