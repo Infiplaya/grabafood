@@ -16,25 +16,25 @@ export default function Favorites() {
   }
 
   if (isLoading) {
-    <div>Loading...</div>;
+    <main>Loading...</main>;
   }
 
   if (isError) {
-    <div>Something went wrong...</div>;
+    <main>Something went wrong...</main>;
   }
   if (session) {
     return (
-      <div>
+      <main className="mx-auto mt-12 min-h-screen lg:max-w-7xl">
         {data ? (
-          <div>
+          <div className="space-y-5">
             {data.favoriteRecipes.map((recipe) => (
               <div
-                className="flex items-center justify-between px-10"
+                className="flex items-center justify-between gap-5 px-10"
                 key={recipe.id}
               >
                 <Link
                   href={`/recipes/${recipe.id}`}
-                  className="rounded- p-3 transition-all hover:bg-neutral-200"
+                  className="rounded-lg p-3 transition-all hover:bg-neutral-200"
                 >
                   <p>{recipe.name}</p>
                 </Link>
@@ -53,7 +53,7 @@ export default function Favorites() {
         ) : (
           <p>No recipes in your favorites</p>
         )}
-      </div>
+      </main>
     );
   }
 

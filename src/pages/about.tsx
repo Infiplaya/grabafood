@@ -1,11 +1,8 @@
 const About = () => {
   return (
-    <section
-      id="about"
-      className="flex w-full flex-col items-center justify-center scroll-smooth bg-gray-200 p-5 align-middle  text-gray-100 md:h-screen lg:h-screen"
-    >
-      <article className="prose prose-h2:text-4xl p-10 text-2xl text-black">
-        <h2>What&apos;s this?</h2>
+    <section id="about" className="mx-auto py-32 lg:max-w-7xl">
+      <article className="prose prose-h2:text-4xl leading-10 p-10 text-2xl text-black">
+        <h2 className="text-3xl">What&apos;s this?</h2>
         <p>
           Do you love to cook? Having trouble finding the right recipe for u?
           Let us help! Thanks to this website, and data from Spoonacular API,
