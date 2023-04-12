@@ -1,4 +1,4 @@
-import { useFavorites } from "@/hooks/useFavorites";
+import { useFavoritesIds } from "@/hooks/useFavoritesIds";
 import { StarIcon } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import Spinner from "@/components/ui/Spinner";
@@ -16,7 +16,7 @@ export default function FavoritesButtons({
   removeLoading: boolean;
   addLoading: boolean;
 }) {
-  const favoriteRecipesIds = useFavorites();
+  const favoriteRecipesIds = useFavoritesIds();
   return (
     <>
       {favoriteRecipesIds?.includes(id) ? (

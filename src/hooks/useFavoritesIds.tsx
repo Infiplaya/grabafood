@@ -1,7 +1,7 @@
 import { api } from "@/utils/api";
 import { useSession } from "next-auth/react";
 
-export function useFavorites() {
+export function useFavoritesIds() {
   const { data: session } = useSession();
   const { data: favorites } = api.recipes.getAllFavoritesRecipes.useQuery(
     undefined,
