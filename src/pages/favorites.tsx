@@ -24,7 +24,7 @@ export default function Favorites() {
   }
   if (session) {
     return (
-      <main className="mx-auto mt-12 min-h-screen lg:max-w-7xl">
+      <main className="mx-auto lg:mt-12 min-h-screen lg:max-w-7xl">
         {data ? (
           <div className="min-h-[800px] space-y-5 rounded-lg bg-white px-6 py-12 shadow-md">
             {data.favoriteRecipes.map((recipe) => (

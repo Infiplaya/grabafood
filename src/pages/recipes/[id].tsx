@@ -1,5 +1,6 @@
 import FavoritesButtons from "@/components/FavoritesButtons";
 import { Button } from "@/components/ui/Button";
+import Skeleton from "@/components/ui/Skeleton";
 import Spinner from "@/components/ui/Spinner";
 import { useAddToFavorites } from "@/hooks/useAddToFavorites";
 import { useRemoveFromFavorites } from "@/hooks/useDeleteFromFavorites";
@@ -30,11 +31,20 @@ export default function RecipePage() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <main className="my-12 px-6 lg:mx-auto lg:max-w-7xl">
+        <h1 className="mb-6 text-4xl font-bold">Loading...</h1>
+        <Skeleton />
+      </main>
+    );
   }
 
   if (isError) {
-    return <div>Something went wrong</div>;
+    return (
+      <main className="my-12 px-6 lg:mx-auto lg:max-w-7xl">
+        <h1 className="mb-6 text-4xl font-bold">Something went wrong...</h1>
+      </main>
+    );
   }
 
   if (data) {
@@ -59,11 +69,11 @@ export default function RecipePage() {
             className="rounded-lg shadow-md"
           />
         </div>
-        <div className="mt-6 flex justify-center gap-3">
+        <div className="mt-6 flex flex-wrap gap-3 lg:justify-center">
           {data?.dishTypes.map((dishType) => (
             <p
               key={dishType}
-              className="rounded-lg border border-neutral-300 px-3 py-1 text-sm font-semibold uppercase"
+              className="inline-flex rounded-lg border border-neutral-300 px-2 py-1 text-sm font-semibold uppercase"
             >
               {dishType}
             </p>
