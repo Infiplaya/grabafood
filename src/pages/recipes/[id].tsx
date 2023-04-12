@@ -1,5 +1,6 @@
 import FavoritesButtons from "@/components/FavoritesButtons";
 import DetailsSkeleton from "@/components/ui/DetailsSkeleton";
+import { Layout } from "@/components/ui/Layout";
 import { useAddToFavorites } from "@/hooks/useAddToFavorites";
 import { useRemoveFromFavorites } from "@/hooks/useDeleteFromFavorites";
 import { useRecipeById } from "@/hooks/useRecipes";
@@ -28,25 +29,25 @@ export default function RecipePage() {
 
   if (isLoading) {
     return (
-      <main className="my-12 px-6 lg:mx-auto lg:max-w-7xl">
+      <Layout>
         <div className="flex w-full justify-center">
           <DetailsSkeleton />
         </div>
-      </main>
+      </Layout>
     );
   }
 
   if (isError) {
     return (
-      <main className="my-12 px-6 lg:mx-auto lg:max-w-7xl">
+      <Layout>
         <h1 className="mb-6 text-4xl font-bold">Something went wrong...</h1>
-      </main>
+      </Layout>
     );
   }
 
   if (data) {
     return (
-      <main className="my-12 px-6 lg:mx-auto lg:max-w-7xl">
+      <Layout>
         <div className="flex items-baseline justify-center gap-5">
           <h1 className="mb-6 text-4xl font-bold">{data?.title}</h1>
           <FavoritesButtons
@@ -89,7 +90,7 @@ export default function RecipePage() {
             className="max-w-2xl"
           ></p>
         </div>
-      </main>
+      </Layout>
     );
   }
 

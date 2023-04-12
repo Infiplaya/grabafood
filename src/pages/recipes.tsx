@@ -1,5 +1,6 @@
 import { Searchbar } from "@/components/Searchbar";
 import CardSkeleton from "@/components/ui/CardSkeleton";
+import { Layout } from "@/components/ui/Layout";
 import { type Result, type RecipesData } from "@/types/complex-search";
 import { api } from "@/utils/api";
 import { getRecipes } from "@/utils/spoonacular";
@@ -32,7 +33,7 @@ export default function Recipes({
 
   if (q !== undefined && isLoading) {
     return (
-      <main className="mt-12 px-6 lg:mx-auto lg:max-w-7xl">
+      <Layout>
         <Searchbar />
         <div className="my-12 flex grid-cols-4 flex-col gap-10 lg:grid">
           <CardSkeleton />
@@ -44,11 +45,11 @@ export default function Recipes({
           <CardSkeleton />
           <CardSkeleton />
         </div>
-      </main>
+      </Layout>
     );
   }
   return (
-    <main className="mt-12 px-6 lg:mx-auto lg:max-w-7xl">
+    <Layout>
       <Searchbar />
       <div className="my-12 flex grid-cols-4 flex-col gap-10 lg:grid">
         {isFetched
@@ -59,7 +60,7 @@ export default function Recipes({
               <RecipeCard key={recipe.id} recipe={recipe} />
             ))}
       </div>
-    </main>
+    </Layout>
   );
 }
 
