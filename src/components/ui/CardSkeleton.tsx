@@ -1,6 +1,6 @@
 
 
-export default function Skeleton() {
+export default function CardSkeleton() {
   return (
     <div
       role="status"

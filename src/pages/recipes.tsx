@@ -1,5 +1,5 @@
 import { Searchbar } from "@/components/Searchbar";
-import Skeleton from "@/components/ui/Skeleton";
+import CardSkeleton from "@/components/ui/CardSkeleton";
 import { type Result, type RecipesData } from "@/types/complex-search";
 import { api } from "@/utils/api";
 import { getRecipes } from "@/utils/spoonacular";
@@ -23,7 +23,6 @@ export default function Recipes({
 }) {
   const router = useRouter();
   const { q } = router.query;
-  console.log(q);
   const { data, isFetched, isLoading } = api.recipes.getRecipes.useQuery(
     { query: q },
     {
@@ -36,14 +35,14 @@ export default function Recipes({
       <main className="mt-12 px-6 lg:mx-auto lg:max-w-7xl">
         <Searchbar />
         <div className="my-12 flex grid-cols-4 flex-col gap-10 lg:grid">
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
         </div>
       </main>
     );

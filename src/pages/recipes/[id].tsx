@@ -1,12 +1,9 @@
 import FavoritesButtons from "@/components/FavoritesButtons";
-import { Button } from "@/components/ui/Button";
-import Skeleton from "@/components/ui/Skeleton";
-import Spinner from "@/components/ui/Spinner";
+import CardSkeleton from "@/components/ui/CardSkeleton";
+import DetailsSkeleton from "@/components/ui/DetailsSkeleton";
 import { useAddToFavorites } from "@/hooks/useAddToFavorites";
 import { useRemoveFromFavorites } from "@/hooks/useDeleteFromFavorites";
-import { useFavorites } from "@/hooks/useFavorites";
 import { useRecipeById } from "@/hooks/useRecipes";
-import { StarIcon } from "lucide-react";
 import Image from "next/image";
 
 export default function RecipePage() {
@@ -33,8 +30,9 @@ export default function RecipePage() {
   if (isLoading) {
     return (
       <main className="my-12 px-6 lg:mx-auto lg:max-w-7xl">
-        <h1 className="mb-6 text-4xl font-bold">Loading...</h1>
-        <Skeleton />
+        <div className="flex w-full justify-center">
+          <DetailsSkeleton />
+        </div>
       </main>
     );
   }
