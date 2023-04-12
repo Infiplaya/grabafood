@@ -17,7 +17,7 @@ export default function Favorites() {
   }
 
   if (isLoading) {
-    <Layout>Halooooooooooooooooooooo</Layout>;
+    <Layout>Loading...</Layout>;
   }
 
   if (isError) {
