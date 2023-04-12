@@ -1,5 +1,4 @@
 import FavoritesButtons from "@/components/FavoritesButtons";
-import CardSkeleton from "@/components/ui/CardSkeleton";
 import DetailsSkeleton from "@/components/ui/DetailsSkeleton";
 import { useAddToFavorites } from "@/hooks/useAddToFavorites";
 import { useRemoveFromFavorites } from "@/hooks/useDeleteFromFavorites";

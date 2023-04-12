@@ -1,7 +1,6 @@
 import { SearchIcon } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
 import { Input } from "./ui/Input";
 
 export function Searchbar() {
