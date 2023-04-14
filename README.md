@@ -1,28 +1,25 @@
-# Create T3 App
+# Grab A Food
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+App that helps users find new recipes, create new recipes lists, etc.
 
-## What's next? How do I make an app with this?
+## Introduction
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Cooking is a passion for many of us, and finding new recipes is always exciting. That’s why I decided to create an app that makes it easy for users to discover new and delicious dishes. The concept behind the app is simple: users can either search for a specific recipe or choose to have a random recipe displayed to them.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Stack
+- React, Nextjs on the frontend
+- Prisma as ORM Database
+- TRPC for fully typesafe APIs
+- NextAuth
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## Features
 
-## Learn More
+The app is easy to use, with a clean and intuitive interface. To get started, simply visit the app’s homepage and search!. From there, you can either create an account or continue as a guest. Once you’re logged in, you have the ability to save dishes that catched your eye to favorites recipes list.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+If you choose the “Search by Dish” option, the app will display a list of recipes that match your query. Simply click on one of the recipes to view the details, which include an image of the dish, its name, a list of ingredients, and the instructions.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+The “Random Recipe” option is perfect for those who can’t decide what to cook. With just one click, you’ll be presented with a randomly selected recipe, complete with an image of the dish, its name, ingredients, and instructions.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## Summary
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Overall, this app is a great resource for anyone looking to expand their recipe collection. Whether you’re searching for a specific dish or looking for inspiration, this app makes it easy to discover new and delicious recipes. So, why not give it a try and see what delicious meals you can create!
