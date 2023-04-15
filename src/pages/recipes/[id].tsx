@@ -85,10 +85,14 @@ export default function RecipePage() {
         </ul>
         <div className="mt-12">
           <h2 className="mb-3 text-2xl font-bold">Recipe</h2>
-          <p
-            dangerouslySetInnerHTML={{ __html: data?.instructions }}
-            className="max-w-2xl"
-          ></p>
+          {data.instructions ? (
+            <p
+              dangerouslySetInnerHTML={{ __html: data?.instructions }}
+              className="max-w-2xl"
+            ></p>
+          ) : (
+            "Unfortunately no recipe was provided"
+          )}
         </div>
       </Layout>
     );
