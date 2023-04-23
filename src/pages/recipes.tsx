@@ -7,15 +7,21 @@ import { getRecipes } from "@/utils/spoonacular";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { z } from "zod";
 
 export async function getStaticProps() {
-  const data = await getRecipes("");
+  const data = await getRecipes();
+
+  if (!data) throw new Error("Something went wrong");
+
   return {
     props: {
-      recipes: data?.results,
+      recipes: data.results,
     },
   };
 }
+
+const querySchema = z.string().min(1);
 
 export default function Recipes({
   recipes,
@@ -24,12 +30,15 @@ export default function Recipes({
 }) {
   const router = useRouter();
   const { q } = router.query;
-  const { data, isFetched, isLoading } = api.recipes.getRecipes.useQuery(
-    { query: q },
-    {
-      enabled: q !== undefined,
-    }
-  );
+  const safeQuery = querySchema.parse(q);
+
+  const { data, isFetched, isLoading, isError } =
+    api.recipes.getRecipes.useQuery(
+      { query: safeQuery },
+      {
+        enabled: q !== undefined,
+      }
+    );
 
   if (q !== undefined && isLoading) {
     return (
@@ -45,6 +54,15 @@ export default function Recipes({
           <CardSkeleton />
           <CardSkeleton />
         </div>
+      </Layout>
+    );
+  }
+
+  if (isError || data?.results.length === 0) {
+    return (
+      <Layout>
+        <Searchbar />
+        <p>No results matched your query! Try different one!</p>
       </Layout>
     );
   }

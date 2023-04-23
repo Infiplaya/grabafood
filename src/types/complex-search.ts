@@ -14,4 +14,5 @@ export interface Result {
 
 export enum ImageType {
     Jpg = "jpg",
+    Png = 'png',
 }
