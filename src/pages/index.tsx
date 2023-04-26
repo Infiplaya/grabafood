@@ -5,10 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Searchbar } from "@/components/Searchbar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-
-function getRandomNumber() {
-  return Math.ceil(Math.random() * 1000);
-}
+import { getRandomPage } from "@/utils/getRandomPage";
 
 const Home: NextPage = () => {
   return (
@@ -33,7 +30,7 @@ const Home: NextPage = () => {
               <p className="text-base font-medium text-neutral-600">
                 Feeling lucky?
               </p>
-              <Link href={`/recipes/${getRandomNumber()}`}>
+              <Link href={`/recipes/${getRandomPage()}`}>
                 <Button variant="subtle" className="text-base text-neutral-600">
                   Get Random Recipe
                 </Button>
@@ -66,7 +63,7 @@ const Home: NextPage = () => {
             <h2 className="text-3xl tracking-tight lg:text-5xl lg:font-medium">
               Feeling lucky?
             </h2>
-            <Link href={`/recipes/${getRandomNumber()}`}>
+            <Link href={`/recipes/${getRandomPage()}`}>
               <Button className="mt-6 text-lg" size="lg">
                 Get Randome Recipe
               </Button>

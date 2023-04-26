@@ -1,15 +1,12 @@
 import { api } from "@/utils/api";
 import { useRouter } from "next/router";
-import { z } from "zod";
-
-const querySchema = z.string().min(1);
 
 export function useRecipeById() {
   const router = useRouter();
   const { id } = router.query;
-  const safeId = querySchema.parse(id);
+  if (typeof id !== "string") throw new Error("Id must be a string");
   const { data, isLoading, isError } = api.recipes.getRecipeById.useQuery({
-    id: safeId,
+    id,
   });
 
   return { data, isLoading, isError };

@@ -44,9 +44,6 @@ export async function getRecipeById(
   if (!process.env.SPOONACULAR_API_KEY) {
     return;
   }
-  if (typeof id !== "string") {
-    return;
-  }
   const res = await fetch(
     `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${process.env.SPOONACULAR_API_KEY}`
   );
