@@ -17,7 +17,7 @@ export const recipeRouter = createTRPCRouter({
   getRecipes: publicProcedure
     .input(
       z.object({
-        query: z.string(),
+        query: z.string().optional(),
       })
     )
     .query(async ({ input }) => {
@@ -26,7 +26,7 @@ export const recipeRouter = createTRPCRouter({
   getRecipeById: publicProcedure
     .input(
       z.object({
-        id: z.string(),
+        id: z.string().optional(),
       })
     )
     .query(async ({ input }) => {

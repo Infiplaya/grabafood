@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/Button";
-import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,7 +6,7 @@ import { Searchbar } from "@/components/Searchbar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { getRandomPage } from "@/utils/getRandomPage";
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <>
       <Head>

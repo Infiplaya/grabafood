@@ -21,7 +21,7 @@ export async function getStaticProps() {
   };
 }
 
-const querySchema = z.string().min(1);
+const querySchema = z.string().min(1).optional();
 
 export default function Recipes({
   recipes,
