@@ -21,9 +21,7 @@ export default function Hero() {
             Feeling lucky?
           </p>
           <Link href={`/recipes/${getRandomPage()}`}>
-            <Button variant="subtle" className="text-base text-neutral-600">
-              Get Random Recipe
-            </Button>
+            <Button>Get Random Recipe</Button>
           </Link>
         </div>
       </div>
