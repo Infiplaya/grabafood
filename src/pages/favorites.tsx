@@ -28,6 +28,20 @@ export default function Favorites() {
     <Layout>
       {session ? (
         <div className="mb-12 min-h-[800px] space-y-5 rounded-lg bg-white px-6 py-12 shadow-md">
+          {data?.favoriteRecipes.length === 0 && (
+            <>
+              <p className="mb-3 text-lg font-medium">
+                You currently don&apos;t have any recipes in your favorites. Go
+                add some!
+              </p>
+              <Link
+                href="/recipes"
+                className="rounded-md bg-orange-500 px-6 py-2 font-medium text-neutral-50"
+              >
+                Go To Recipes
+              </Link>
+            </>
+          )}
           {data?.favoriteRecipes.map((recipe) => (
             <div
               className="flex items-center justify-between gap-5 border-b-2 border-neutral-100 px-10 py-2"

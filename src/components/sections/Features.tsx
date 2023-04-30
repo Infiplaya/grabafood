@@ -54,8 +54,7 @@ export  function Features() {
             <p className="mb-6 w-full text-left text-sm text-neutral-200 lg:mx-auto lg:max-w-md lg:text-base">
               This is the place where you can see all the recipes you choosed to
               bookmark. Just click on one of them and you will be redirected to
-              details page of this recipe. You can delete the recipe from
-              favorites, too!
+              details page of this recipe.
             </p>
             <Image
               src="/favorites.webp"
