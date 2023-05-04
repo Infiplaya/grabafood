@@ -8,9 +8,16 @@ export function useRecipeById() {
   const router = useRouter();
   const { id } = router.query;
   const safeId = querySchema.parse(id);
-  const { data, isLoading, isError } = api.recipes.getRecipeById.useQuery({
-    id: safeId,
-  });
+  const { data, isLoading, isError } = api.recipes.getRecipeById.useQuery(
+    {
+      id: safeId,
+    },
+    {
+      enabled: id !== "undefined",
+    }
+  );
+
+  console.log("data", data);
 
   return { data, isLoading, isError };
 }
