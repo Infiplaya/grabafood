@@ -15,7 +15,6 @@ const Home = () => {
       </Head>
       <main>
         <Hero />
-        <RandomRecipeSection />
         <div className="mt-12 flex w-full justify-center px-6 py-6">
           <Image
             priority={true}

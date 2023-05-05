@@ -17,7 +17,5 @@ export function useRecipeById() {
     }
   );
 
-  console.log("data", data);
-
   return { data, isLoading, isError };
 }

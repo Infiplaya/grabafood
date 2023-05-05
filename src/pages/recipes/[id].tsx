@@ -1,10 +1,12 @@
 import FavoritesButtons from "@/components/FavoritesButtons";
+import { Button } from "@/components/ui/Button";
 import DetailsSkeleton from "@/components/ui/DetailsSkeleton";
 import { Layout } from "@/components/ui/Layout";
 import { useAddToFavorites } from "@/hooks/useAddToFavorites";
 import { useRemoveFromFavorites } from "@/hooks/useDeleteFromFavorites";
 import { useRecipeById } from "@/hooks/useRecipes";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function RecipePage() {
   const { isLoading, isError, data } = useRecipeById();
@@ -41,6 +43,23 @@ export default function RecipePage() {
     return (
       <Layout>
         <h1 className="mb-6 text-4xl font-bold">Something went wrong...</h1>
+        <h2 className="text-2xl font-medium">
+          Seems like this recipe doesn&apos;t exist!
+        </h2>
+        <div className="mt-3">
+          <Link
+            href="/recipes"
+            className="mr-3 rounded-md bg-orange-600 px-3 py-1 text-white transition-all"
+          >
+            Go to recipes
+          </Link>
+          <Link
+            href="/recipes"
+            className="rounded-md bg-orange-600 px-3 py-1 text-white transition-all"
+          >
+            Go to homepage
+          </Link>
+        </div>
       </Layout>
     );
   }

@@ -16,7 +16,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      recipes: data.results,
+      recipes: data,
     },
   };
 }
@@ -58,7 +58,7 @@ export default function Recipes({
     );
   }
 
-  if (isError || data?.results.length === 0) {
+  if (isError || data?.length === 0) {
     return (
       <Layout>
         <Searchbar />
@@ -71,7 +71,7 @@ export default function Recipes({
       <Searchbar />
       <div className="my-12 flex grid-cols-4 flex-col gap-10 lg:grid">
         {isFetched
-          ? data?.results.map((recipe) => (
+          ? data?.map((recipe) => (
               <RecipeCard key={recipe.id} recipe={recipe} />
             ))
           : recipes.map((recipe) => (

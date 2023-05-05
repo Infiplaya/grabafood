@@ -13,7 +13,7 @@ export function Navbar() {
             Grab A <span className="text-orange-500">Food</span>
           </Link>
         </div>
-        <ul className="hidden items-center text-sm  lg:flex">
+        <ul className="hidden items-center text-sm font-medium lg:flex">
           <li>
             <Link
               href="/recipes"

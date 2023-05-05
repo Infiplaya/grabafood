@@ -4,7 +4,10 @@ import {
   publicProcedure,
 } from "@/server/api/trpc";
 import { prisma } from "@/server/db";
-import { getRecipeById, getRecipes } from "@/utils/spoonacular";
+import {
+  getRecipeById,
+  getRecipes,
+} from "@/utils/spoonacular";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
@@ -21,7 +24,7 @@ export const recipeRouter = createTRPCRouter({
       })
     )
     .query(async ({ input }) => {
-      return await getRecipes(input.query);
+      return getRecipes(input.query);
     }),
   getRecipeById: publicProcedure
     .input(
@@ -36,7 +39,7 @@ export const recipeRouter = createTRPCRouter({
           message: "An unexpected error occurred, please try again later.",
         });
       }
-      return await getRecipeById(input.id);
+      return getRecipeById(input.id);
     }),
 
   addToFavorites: protectedProcedure

@@ -1,8 +1,5 @@
-import { getRandomPage } from "@/utils/getRandomPage";
 import Image from "next/image";
-import Link from "next/link";
 import { Searchbar } from "../Searchbar";
-import { Button } from "../ui/Button";
 
 export default function Hero() {
   return (
@@ -16,14 +13,6 @@ export default function Hero() {
           No worries. Just search.
         </h2>
         <Searchbar />
-        <div className="mt-12 hidden items-center gap-3 lg:flex">
-          <p className="text-base font-medium text-neutral-600">
-            Feeling lucky?
-          </p>
-          <Link href={`/recipes/${getRandomPage()}`}>
-            <Button>Get Random Recipe</Button>
-          </Link>
-        </div>
       </div>
       <Image
         priority={true}

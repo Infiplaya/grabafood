@@ -1,22 +1,18 @@
 import { ImageType } from "@/types/complex-search";
-import { type RecipeByID } from "@/types/recipe-by-id";
 import { z } from "zod";
 
 export const imageTypeSchema = z.nativeEnum(ImageType);
 
-export const resultSchema = z.object({
+export const recipeSchema = z.object({
   id: z.number(),
   title: z.string(),
   image: z.string(),
   imageType: imageTypeSchema,
 });
 
-export const recipesDataSchema = z.object({
-  results: z.array(resultSchema),
-  offset: z.number(),
-  number: z.number(),
-  totalResults: z.number(),
-});
+export const recipesDataSchema = z.array(recipeSchema);
+
+export const randomRecipeDataSchema = z.object({});
 
 export async function getRecipes(query?: string | undefined) {
   if (!process.env.SPOONACULAR_API_KEY) {
@@ -35,7 +31,10 @@ export async function getRecipes(query?: string | undefined) {
     );
   }
 
-  return recipesDataSchema.parse(await res.json());
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { results } = await res.json();
+
+  return recipesDataSchema.parse(results);
 }
 
 export const recipeByIdSchema = z.object({
