@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import Hero from "@/components/sections/Hero";
-import { RandomRecipeSection } from "@/components/sections/RandomRecipe";
 import { Features } from "@/components/sections/Features";
 import { Spoonacular } from "@/components/sections/Spoonacular";
 
