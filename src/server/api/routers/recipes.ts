@@ -4,10 +4,7 @@ import {
   publicProcedure,
 } from "@/server/api/trpc";
 import { prisma } from "@/server/db";
-import {
-  getRecipeById,
-  getRecipes,
-} from "@/utils/spoonacular";
+import { getRecipeById, getRecipes } from "@/utils/spoonacular";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
@@ -105,4 +102,14 @@ export const recipeRouter = createTRPCRouter({
       },
     });
   }),
+
+  getReviewsForRecipe: protectedProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input }) => {
+      return await prisma.review.findMany({
+        where: {
+          recipeId: input.id,
+        },
+      });
+    }),
 });
