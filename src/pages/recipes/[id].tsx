@@ -1,4 +1,5 @@
 import FavoritesButtons from "@/components/FavoritesButtons";
+import { Reviews } from "@/components/reviews";
 import { Button } from "@/components/ui/Button";
 import DetailsSkeleton from "@/components/ui/DetailsSkeleton";
 import { Layout } from "@/components/ui/Layout";
@@ -113,6 +114,7 @@ export default function RecipePage() {
             "Unfortunately no recipe was provided"
           )}
         </div>
+        <Reviews recipeId={data.id} />
       </Layout>
     );
   }
