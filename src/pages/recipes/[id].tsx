@@ -1,6 +1,5 @@
 import FavoritesButtons from "@/components/FavoritesButtons";
 import { Reviews } from "@/components/Reviews";
-import { Button } from "@/components/ui/Button";
 import DetailsSkeleton from "@/components/ui/DetailsSkeleton";
 import { Layout } from "@/components/ui/Layout";
 import { useAddToFavorites } from "@/hooks/useAddToFavorites";

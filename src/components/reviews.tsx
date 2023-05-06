@@ -9,7 +9,7 @@ export function Reviews({ recipeId }: { recipeId: number }) {
   const { data } = useReviews(recipeId);
   const { data: session } = useSession();
   return (
-    <div className="mt-12 lg:mt-16 grid lg:grid-cols-2 lg:gap-5">
+    <div className="mt-12 grid lg:mt-16 lg:grid-cols-2 lg:gap-5">
       <div className="mb-6">
         <h2 className="text-2xl font-semibold">Reviews of this recipe</h2>
         <div className="mt-2 flex items-center gap-1">
