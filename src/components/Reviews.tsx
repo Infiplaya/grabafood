@@ -12,12 +12,15 @@ export function Reviews({ recipeId }: { recipeId: number }) {
     id: recipeId,
   });
 
-  console.log(rating);
 
   function getStarsRating(starNumber: number) {
     const stars = data
       ?.map((r) => r.stars)
       .filter((star) => star === starNumber);
+
+    if (stars?.length === 0) {
+      return 0;
+    }
 
     if (stars && data) {
       const percentage = Math.floor((stars.length / data.length) * 100);
