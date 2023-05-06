@@ -1,11 +1,13 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import { AddReview } from "./AddReview";
 import { Button } from "./ui/Button";
 
 export function ReviewDialog({ recipeId }: { recipeId: number }) {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
@@ -23,7 +25,14 @@ export function ReviewDialog({ recipeId }: { recipeId: number }) {
           <Dialog.Title className="mb-3 text-2xl font-semibold text-neutral-800">
             Add new Review
           </Dialog.Title>
-          <AddReview recipeId={recipeId} closeDialog={() => setOpen(false)} />
+          {session ? (
+            <AddReview recipeId={recipeId} closeDialog={() => setOpen(false)} />
+          ) : (
+            <>
+              <Button onClick={() => void signIn('google')}>Sign In</Button>
+              <p className="mt-2">To add new review!</p>
+            </>
+          )}
           <Dialog.Close asChild>
             <button
               className="text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute right-[10px] top-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"

@@ -22,6 +22,18 @@ export const reviewsRouter = createTRPCRouter({
         },
       });
     }),
+  getAverageRating: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input }) => {
+      return await prisma.review.aggregate({
+        _avg: {
+          stars: true,
+        },
+        where: {
+          recipeId: input.id,
+        },
+      });
+    }),
 
   addReview: protectedProcedure
     .input(

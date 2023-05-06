@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import * as Progress from "@radix-ui/react-progress";
 
-export function ProgressBar() {
+export function ProgressBar({ rating }: { rating: number }) {
   const [progress, setProgress] = useState(13);
 
   useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500);
+    const timer = setTimeout(() => setProgress(rating), 500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [rating]);
 
   return (
     <Progress.Root
-      className="relative h-[15px] w-[300px] overflow-hidden rounded-full border border-neutral-400 bg-neutral-300"
+      className="relative h-[15px] w-full overflow-hidden rounded-full border border-neutral-400 bg-neutral-300 lg:w-[350px]"
       style={{
         // Fix overflow clipping in Safari
         // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0

@@ -1,36 +1,62 @@
 import { useReviews } from "@/hooks/useReviews";
 import { Star, StarIcon } from "lucide-react";
-import { useSession } from "next-auth/react";
 import { UserAvatar } from "./ui/Avatar";
 import { ReviewDialog } from "./ReviewDialog";
 import { ProgressBar } from "./ui/Progress";
+import { api } from "@/utils/api";
 
 export function Reviews({ recipeId }: { recipeId: number }) {
   const { data } = useReviews(recipeId);
-  const { data: session } = useSession();
+
+  const { data: rating } = api.reviews.getAverageRating.useQuery({
+    id: recipeId,
+  });
+
+  console.log(rating);
+
+  function getStarsRating(starNumber: number) {
+    const stars = data
+      ?.map((r) => r.stars)
+      .filter((star) => star === starNumber);
+
+    if (stars && data) {
+      const percentage = Math.floor((stars.length / data.length) * 100);
+      return percentage;
+    }
+    return 0;
+  }
+
   return (
     <div className="mt-12 grid lg:mt-16 lg:grid-cols-2 lg:gap-5">
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold">Reviews of this recipe</h2>
+        <h2 className="text-2xl font-semibold text-slate-900">Reviews</h2>
         <div className="mt-2 flex items-center gap-1">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Star
-              key={index}
-              className={2 > index ? "h-6 w-6 fill-neutral-800" : "fill-none"}
-            />
-          ))}
-          <p className="ml-3 text-sm text-neutral-600">Based on 126 reviews</p>
+          {rating?._avg.stars &&
+            Array.from({ length: 5 }).map((_, index) => (
+              <Star
+                key={index}
+                className={
+                  rating._avg.stars! > index + 0.5
+                    ? "h-6 w-6 fill-yellow-400"
+                    : "fill-none"
+                }
+              />
+            ))}
+          <p className="ml-3 text-sm text-neutral-600">
+            Based on {data?.length} review(s)
+          </p>
         </div>
 
         <div className="mt-6 space-y-2">
           {Array.from({ length: 5 })
             .map((_, index) => (
               <div key={index} className="flex items-center gap-3">
-                <p className="flex w-9 items-center justify-between">
-                  <span>{index + 1}</span> <StarIcon className="h-5 w-5" />
+                <p className="flex w-10">
+                  <span className="w-5">{index + 1}</span>{" "}
+                  <StarIcon className="h-5 w-5 fill-yellow-400" />
                 </p>
-                <ProgressBar />
-                <p>63%</p>
+                <ProgressBar rating={getStarsRating(index + 1)} />
+                <p>{getStarsRating(index + 1)}%</p>
               </div>
             ))
             .reverse()}
@@ -47,16 +73,16 @@ export function Reviews({ recipeId }: { recipeId: number }) {
         {data?.map((r) => (
           <li key={r.id} className="py-6">
             <div className="flex items-center gap-3">
-              <UserAvatar user={session!.user} />
+              <UserAvatar user={r.user} />
               <div>
                 <p className="text-sm font-bold">{r.user.name}</p>
-                <div className="flex">
+                <div className="mt-1 flex">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Star
                       key={index}
                       className={
                         r.stars > index
-                          ? "h-5 w-5 fill-black"
+                          ? "h-5 w-5 fill-yellow-400"
                           : "h-5 w-5 fill-none"
                       }
                     />
@@ -64,7 +90,7 @@ export function Reviews({ recipeId }: { recipeId: number }) {
                 </div>
               </div>
             </div>
-            <p className="mt-3 text-neutral-600">{r.description}</p>
+            <p className="mt-6 text-neutral-600">{r.description}</p>
           </li>
         ))}
       </ul>

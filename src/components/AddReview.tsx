@@ -13,6 +13,7 @@ export function AddReview({
 }) {
   const [description, setDescription] = useState("");
   const [stars, setStars] = useState(0);
+  const [hoveredStars, setHoveredStars] = useState(0);
 
   const addReviewMutation = useAddReview(closeDialog);
 
@@ -32,7 +33,7 @@ export function AddReview({
   return (
     <div>
       <form onSubmit={handleAddReview}>
-        <label htmlFor="description" className="text-lg font-medium">
+        <label htmlFor="description" className="text-lg font-semibold">
           Share your thoughts
         </label>
         <textarea
@@ -48,18 +49,18 @@ export function AddReview({
           </p>
         ) : null}
 
-        <div className="my-3">
-          <label>Rating</label>
+        <div className="my-3 space-y-2">
+          <label className="font-semibold">Rating</label>
           <div className="group flex gap-2">
             {Array.from({ length: 5 }).map((_, index) => (
               <Star
                 key={index}
                 onClick={() => setStars(index + 1)}
+                onMouseOver={() => setHoveredStars(index + 1)}
                 className={cn(
-                  stars > index
-                    ? "fill-black"
-                    : "fill-none  hover:fill-slate-600",
-                  "cursor-pointer"
+                  stars > index ? "fill-yellow-400" : "fill-none",
+                  hoveredStars > index ? "group-hover:fill-yellow-400" : "",
+                  "icon cursor-pointer transition-colors"
                 )}
               />
             ))}
@@ -68,10 +69,11 @@ export function AddReview({
             <p className="my-3 text-sm font-medium text-red-500">{starsErr}</p>
           ) : null}
         </div>
-
-        <Button type="submit" className="mt-2">
-          Add Review
-        </Button>
+        <div className="flex w-full justify-end">
+          <Button type="submit" className="ml-auto">
+            Add Review
+          </Button>
+        </div>
       </form>
     </div>
   );

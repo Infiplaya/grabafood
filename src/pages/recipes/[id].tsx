@@ -90,7 +90,7 @@ export default function RecipePage() {
           {data?.dishTypes.map((dishType) => (
             <p
               key={dishType}
-              className="inline-flex rounded-lg border border-neutral-300 px-2 py-1 text-sm font-semibold uppercase"
+              className="inline-flex rounded-lg border bg-orange-400 px-2 py-1 text-xs font-semibold uppercase"
             >
               {dishType}
             </p>

@@ -29,7 +29,7 @@ export default function FavoritesButtons({
           {removeLoading ? (
             <Spinner />
           ) : (
-            <StarIcon className="fill-yellow-400 stroke-1" />
+            <StarIcon className="fill-yellow-400" />
           )}
         </Button>
       ) : (
@@ -42,7 +42,7 @@ export default function FavoritesButtons({
           {addLoading ? (
             <Spinner />
           ) : (
-            <StarIcon className="fill-white stroke-1" />
+            <StarIcon className="fill-white" />
           )}
         </Button>
       )}
