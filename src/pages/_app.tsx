@@ -21,14 +21,19 @@ const MyApp: AppType<{ session: Session | null }> = ({
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session}>
-      <main className={`${inter.variable} font-sans`}>
-        <Navbar />
-        <Component {...pageProps} />
-        <Toaster />
-        <Footer />
-      </main>
-    </SessionProvider>
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily};
+        }
+      `}</style>
+      <SessionProvider session={session}>
+          <Navbar />
+          <Component {...pageProps} />
+          <Toaster />
+          <Footer />
+      </SessionProvider>
+    </>
   );
 };
 
