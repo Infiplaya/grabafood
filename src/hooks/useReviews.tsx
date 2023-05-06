@@ -9,7 +9,7 @@ export function useReviews(id: number) {
   return { data, isLoading, isError };
 }
 
-export function useAddReview() {
+export function useAddReview(closeDialog: () => void) {
   const { toast } = useToast();
   const addReviewMutation = api.reviews.addReview.useMutation({
     onSuccess: () => {
@@ -17,6 +17,7 @@ export function useAddReview() {
         title: "Reviews",
         description: "You succesfully added new review!",
       });
+      closeDialog();
     },
     onError: () => {
       toast({

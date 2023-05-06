@@ -17,6 +17,9 @@ export const reviewsRouter = createTRPCRouter({
         include: {
           user: true,
         },
+        orderBy: {
+          createdAt: "desc",
+        },
       });
     }),
 
@@ -24,7 +27,10 @@ export const reviewsRouter = createTRPCRouter({
     .input(
       z.object({
         recipeId: z.number(),
-        stars: z.number().min(1, {"message": "Please provide correct rating!"}).max(5),
+        stars: z
+          .number()
+          .min(1, { message: "Please provide correct rating!" })
+          .max(5),
         description: z
           .string()
           .min(10, {
